@@ -4,15 +4,102 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>I Love You Animation</title>
+    <title>Jumping Anime Reveal</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            background: linear-gradient(to right, #ffe8ec, #e0f7ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .jump-character {
+            position: absolute;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            opacity: 0;
+            transition: all 1.5s ease;
+        }
+
+        .jump-character img {
+            width: 240px;
+            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.4));
+        }
+
+        .love-note {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            background: #ff007f;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 12px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .show-and-jump {
+            transform: translateX(-50%) translateY(-200px) scale(1);
+            opacity: 1;
+            animation: floatUp 1.2s ease-out forwards;
+        }
+
+        .show-and-jump .love-note {
+            transform: translateX(-50%) scale(1);
+            opacity: 1;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateX(-50%) translateY(0) scale(0.5);
+                opacity: 0;
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(-100px) scale(1.1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(-50%) translateY(-200px) scale(1);
+            }
+        }
+
+        .hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="character-container">
-        <img src="pngwing.com.png" alt="Character" class="character" />
-        <div class="love-note">I LOVE YOU ❤️ Marioomy</div>
+
+    <!-- Jumping Fantasy Character -->
+    <div class="jump-character hidden" id="jumpCharacter">
+        <img src="pngwing.com.png" alt="Jumping Anime" />
+        <div class="love-note">I LOVE YOU MAREM ❤️</div>
     </div>
+
+    <script>
+        setTimeout(() => {
+            const ghost = document.getElementById('jumpCharacter');
+            ghost.classList.remove('hidden');
+            ghost.classList.add('show-and-jump');
+        }, 3000);
+    </script>
+
 </body>
 
 </html>
